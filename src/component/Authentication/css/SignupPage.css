@@ -1,0 +1,12 @@
+.signup-form-container {
+  width: 60%;
+  text-align: center;
+  margin: auto;
+  margin-top: 5%;
+}
+.signup-button {
+  margin-top: 40px;
+}
+.signup-page-heading {
+  margin-bottom: 30px;
+}
