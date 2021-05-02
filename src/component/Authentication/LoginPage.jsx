@@ -1,5 +1,5 @@
 import React from "react";
-import {} from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import "./css/LoginPage.css";
 import { useFormik } from "formik";
 export default (props) => {
@@ -23,44 +23,50 @@ export default (props) => {
   });
   return (
     <section>
-      <section className="authform-box-section">
-        <div className="authform-box-div">
-          <form>
-            <h3 className="form-heading text-center">
-              Vaccine Availability Checker (18-44)
-            </h3>
+      <Form className="initial-form">
+        <h3 className="form-heading text-center">
+          Vaccine Availability Checker (18-44)
+        </h3>
+        <Form.Group controlId="formBasicEmail">
+          <Form.Label>Enter Pincode</Form.Label>
+          <Form.Control
+            name="pincode"
+            type="text"
+            className="form-control"
+            placeholder="Enter pincode"
+            onChange={formik.handleChange}
+          />
+        </Form.Group>
 
-            <div className="form-group">
-              <label>Pin Code</label>
-              <input
-                name="pincode"
-                type="text"
-                className="form-control"
-                placeholder="Enter pincode"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <input
-              name="vaccine_date"
-              type="date"
-              className="form-control"
-              placeholder="Enter pincode"
-              defaultValue={formik.initialValues.vaccine_date}
-              onChange={formik.handleChange}
-            />
-            <button
-              type="submit"
-              className="btn btn-dark btn-lg btn-block check-btn"
-              onClick={formik.handleSubmit}
-            >
-              Check
-            </button>
-            {/* <p className="forgot-password text-center">
-              Forgot <a href="#">password?</a>
-            </p> */}
-          </form>
-        </div>
-      </section>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Preferred Date</Form.Label>
+          <Form.Control
+            name="vaccine_date"
+            type="date"
+            className="form-control"
+            placeholder="Enter pincode"
+            defaultValue={formik.initialValues.vaccine_date}
+            onChange={formik.handleChange}
+          />
+        </Form.Group>
+
+        <Button
+          variant="primary"
+          type="submit"
+          className="btn btn-dark btn-lg btn-block check-btn"
+          onClick={formik.handleSubmit}
+        >
+          Submit
+        </Button>
+      </Form>
+      <Alert variant="success">
+        <p>
+          Data on this application is fetched from official COWIN API's provided
+          by government.
+        </p>
+        <hr />
+        <p>Data is updated periodically every 30 seconds</p>
+      </Alert>
     </section>
   );
 };
