@@ -1,0 +1,2 @@
+# VaccineSlotChecker
+Created with CodeSandbox
