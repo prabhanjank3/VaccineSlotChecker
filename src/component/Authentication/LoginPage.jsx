@@ -6,7 +6,8 @@ export default (props) => {
   const formik = useFormik({
     initialValues: {
       pincode: "",
-      vaccine_date: new Date()
+      vaccine_date: new Date(),
+      user_email: ""
     },
     onSubmit: (values) => {
       // console.log(values);
@@ -49,7 +50,15 @@ export default (props) => {
             onChange={formik.handleChange}
           />
         </Form.Group>
-
+        <Form.Label>email</Form.Label>
+        <Form.Control
+          name="user_email"
+          type="email"
+          className="form-control"
+          placeholder="Enter Email"
+          defaultValue={formik.initialValues.user_email}
+          onChange={formik.handleChange}
+        />
         <Button
           variant="primary"
           type="submit"

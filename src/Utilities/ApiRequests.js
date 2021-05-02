@@ -25,5 +25,9 @@ const cowinapi = (values) => {
       values.date
   );
 };
-
-export { AuthenticateUser, SubmitNewUserRequest, cowinapi };
+const sendAlert = (email) => {
+  return axios.get(
+    "https://myemailserver.herokuapp.com/mail?toaddress=" + email
+  );
+};
+export { AuthenticateUser, SubmitNewUserRequest, cowinapi, sendAlert };

@@ -4,7 +4,11 @@ import Navbar from "../../component/Boilerplate/Navbar";
 import { connect } from "react-redux";
 import { Alert } from "react-bootstrap";
 import LoginPageComponent from "../../component/Authentication/LoginPage";
-import { AuthenticateUser, cowinapi } from "../../Utilities/ApiRequests";
+import {
+  AuthenticateUser,
+  cowinapi,
+  sendAlert
+} from "../../Utilities/ApiRequests";
 import NavbarContainer from "../Navbar/Navbar";
 import { Redirect } from "react-router-dom";
 import ItemRow from "../../component/display/itemrow";
@@ -33,6 +37,15 @@ class LoginPage extends Component {
         });
         console.log("SessionData");
         console.log(sessionData);
+        for (var session of sessionData) {
+          if (session.available_capacity !== 0) {
+            sendAlert(values.user_email).then((resp) => {
+              console.log("Email Sent");
+              console.log(resp);
+            });
+            break;
+          }
+        }
         this.setState({
           ...this.state,
           isSubmitted: true,
