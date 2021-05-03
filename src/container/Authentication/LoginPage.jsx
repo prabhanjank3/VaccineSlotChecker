@@ -16,7 +16,8 @@ class LoginPage extends Component {
   state = {
     isSubmitted: false,
     availableSlots: [],
-    values: {}
+    values: {},
+    isEmailSent:false
   };
   handleSubmit = (values) => {
     // console.log("Values");
@@ -37,6 +38,8 @@ class LoginPage extends Component {
         });
         console.log("SessionData");
         console.log(sessionData);
+        if(this.state.isEmailSent === false)
+        {
         for (var session of sessionData) {
           if (session.available_capacity !== 0) {
             sendAlert(values.user_email).then((resp) => {
@@ -44,8 +47,13 @@ class LoginPage extends Component {
               console.log(resp);
             });
             break;
+            this.state.setState({
+              ...this.state,
+              isEmailSent:true
+            })
           }
         }
+      }
         this.setState({
           ...this.state,
           isSubmitted: true,
@@ -61,7 +69,8 @@ class LoginPage extends Component {
     this.setState({
       isSubmitted: false,
       availableSlots: [],
-      values: {}
+      values: {},
+      isEmailSent:false
     });
   };
   render() {

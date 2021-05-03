@@ -50,7 +50,7 @@ export default (props) => {
             onChange={formik.handleChange}
           />
         </Form.Group>
-        <Form.Label>email</Form.Label>
+        <Form.Label>Email</Form.Label>
         <Form.Control
           name="user_email"
           type="email"
@@ -70,11 +70,10 @@ export default (props) => {
       </Form>
       <Alert variant="success">
         <p>
-          Data on this application is fetched from official COWIN API's provided
-          by government.
+          Data Source: Cowin API's
         </p>
         <hr />
-        <p>Data is updated periodically every 30 seconds</p>
+        <p>Data Update: Every 30 Seconds</p>
       </Alert>
     </section>
   );
