@@ -41,7 +41,7 @@ class LoginPage extends Component {
         if(this.state.isEmailSent === false)
         {
         for (var session of sessionData) {
-          if (session.available_capacity !== 0) {
+          if (session.available_capacity !== 0 && session.min_age_limit===18) {
             sendAlert(values.user_email).then((resp) => {
               console.log("Email Sent");
               console.log(resp);
